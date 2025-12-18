@@ -47,13 +47,13 @@ export default function AppRoutes() {
 
         {/* NESTED Super Admin AUTH ROUTES */}
           <Route path="/auth/super-admin/login" element={<SuperAdminLogin />} />
+          <Route path="/auth/super-admin/forgot-password" element={<SuperAdminForgotPassword />} />
+          <Route path="/auth/super-admin/verification" element={<SuperAdminVerficationCode />} />
+          <Route path="/auth/super-admin/set-password" element={<SuperAdminResetPassword />} />
         <Route path="/super-admin" element={<SuperAdminLayout />}>
           <Route index element={<SuperAdminDashboard />} />
           <Route path="data-analytics" element={<DataAnalytics />} />
           <Route path="data-analytics/company/:id" element={<CompanyData />} />
-          <Route path="forgot-password" element={<SuperAdminForgotPassword />} />
-          <Route path="verification" element={<SuperAdminVerficationCode />} />
-          <Route path="set-password" element={<SuperAdminResetPassword />} />
         </Route>
       </Routes>
     </BrowserRouter>
