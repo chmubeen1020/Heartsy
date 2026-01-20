@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom"; // Import useLocation to get the current URL
-import { Home, BarChart, FileText, Users, Book, Settings } from "lucide-react"; // Import icons from lucide-react
+import { Home, BarChart, FileText, Users, Book, ClipboardCheckIcon, ScreenShare, CreditCard } from "lucide-react"; // Import icons from lucide-react
 import { images } from "../../../../assets";
 
 const sidebarLinks = [
@@ -8,19 +8,21 @@ const sidebarLinks = [
   { name: "Data Analytics", icon: <BarChart className="w-5 h-5 mr-3" />, path: "/super-admin/data-analytics" },
   { name: "Assessments", icon: <FileText className="w-5 h-5 mr-3" />, path: "/super-admin/assessments" },
   { name: "Courses", icon: <Book className="w-5 h-5 mr-3" />, path: "/super-admin/courses" },
+  { name: "Reports", icon: <ClipboardCheckIcon className="w-5 h-5 mr-3" />, path: "/super-admin/reports" },
   { name: "User Management", icon: <Users className="w-5 h-5 mr-3" />, path: "/super-admin/user-management" },
-  { name: "Settings", icon: <Settings className="w-5 h-5 mr-3" />, path: "/settings" },
+  { name: "Virtual Course", icon: <ScreenShare className="w-5 h-5 mr-3" />, path: "/super-admin/virtual-course" },
+  { name: "Subscrption & Biling", icon: <CreditCard className="w-5 h-5 mr-3" />, path: "/super-admin/subscription-biling" },
 ];
 
 const SuperAdminSidebar = () => {
   const location = useLocation(); // Get the current URL
 
   return (
-    <div className="w-60 h-screen bg-Sidebar shadow-md flex flex-col items-center">
+    <div className="w-full h-screen bg-sidebar shadow-md flex flex-col items-center">
       <div className="p-5 flex items-center space-x-2">
-        <img src={images.BlackHeartsyLogo} alt="Heartsy" className="w-20 h-14" />
-      </div>
-      <nav className="mt-8">
+              <img src={images.BlackHeartsyLogo} alt="Heartsy" className="w-28 h-14" />
+            </div>
+      <nav className="mt-4">
         <ul>
          {sidebarLinks.map((link) => {
   const isDashboard = link.path === "/super-admin";
@@ -33,7 +35,7 @@ const SuperAdminSidebar = () => {
     <li key={link.name}>
       <Link
         to={link.path}
-        className={`flex items-center p-2 font-medium rounded-xl mt-3 hover:bg-gray-100 ${
+        className={`flex items-center p-2 rounded-xl mt-3 hover:bg-gray-100 ${
           isActive
             ? "text-[#945EEB]"
             : "text-gray-700"
@@ -41,10 +43,7 @@ const SuperAdminSidebar = () => {
       >
         {link.icon}
         {link.name}
-
-        {isActive && (
-          <span className="ml-4 w-2 h-2 rounded-full bg-[#945EEB]" />
-        )}
+        <span className={`ml-4 w-2 h-2 rounded-full ${isActive ? 'bg-[#945EEB]' : 'bg-transparent'}`}/>
       </Link>
     </li>
   );

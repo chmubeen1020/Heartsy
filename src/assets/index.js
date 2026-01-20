@@ -6,6 +6,11 @@ import Icon2 from "./icons/FeatureHeroIcon-2.png";
 import Icon3 from "./icons/FeatureHeroIcon-3.png";
 import Icon4 from "./icons/FeatureHeroIcon-4.png";
 import Filter from "./icons/filter-icon.png";
+import Dummy from "./images/dummy.avif";
+import EmployeeSidebar from './images/Group.png'
+import GuyImage from './images/GuyImage.png';
+import Completion from './images/AssesstmentCompletion.png'
+
 
 import Pro from "./icons/ProIcon.png";
 import ProPlus from "./icons/ProIconPlus.png";
@@ -15,7 +20,11 @@ import Peoples from "./icons/peoples.svg";
 export const images = {
   HeartsyLogo,
   BlackHeartsyLogo,
-  Userpic
+  Userpic,
+  Dummy,
+  EmployeeSidebar,
+  GuyImage,
+  Completion 
 };
 export const FeatureHeroIcon = {
   Icon1,

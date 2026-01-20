@@ -10,9 +10,9 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { ChartLineLinear } from "../ChartLine";
 import PieChartWithCustomizedLabel from "../PieChart";
-import { Clock } from "lucide-react";
+import ChartLine from "../ChartLine";
+import {  Clock } from "lucide-react";
 
 // Register the components in ChartJS
 ChartJS.register(
@@ -38,26 +38,26 @@ const SuperAdminDashboard = () => {
     { name: "Category 4", value: 200 },
   ];
   return (
-    <div className="flex-1 p-6">
+    <div className="pb-4">
       {/* Header Section */}
-      <div className="flex justify-between items-center mb-8 border p-6 rounded-xl bg-[#945EEB]">
-        <div className="flex flex-col">
-          <h1 className="text-xl text-white">Virtual Learning Sessions</h1>
-          <span className="text-sm text-white">
+      <div className="flex flex-col sm:flex-row justify-between gap-2 md:items-center mb-4 sm:border border-gray-200  p-4 md:p-6 rounded-xl sm:bg-[#945EEB]">
+        <div className="flex flex-col items-start">
+          <h1 className="text-xl sm:text-white">Virtual Learning Sessions</h1>
+          <span className="text-sm sm:text-white">
             Scheduled sessions with employees
           </span>
         </div>
-        <Link to="/sessions">
-          <button className=" border border-white text-white py-2 px-4 rounded-lg ">
+        <Link to="/sessions" className="w-full sm:w-fit">
+          <button className="w-full sm:w-fit bg-primary sm:bg-transparent sm:border sm:border-white text-white py-2 px-4 rounded-lg ">
             View Scheduled Sessions
           </button>
         </Link>
       </div>
 
       {/* Key Stats */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
         {/* Total Users */}
-        <div className="px-6 py-4 bg-green-300/20 shadow-lg rounded-xl flex flex-col items-start gap- border border-green-500">
+        <div className="p-4 bg-green-300/20 rounded-xl flex flex-col items-start gap-1 border border-green-500">
           <div className="text-lg ">Total Users</div>
           <div className="text-2xl font-bold text-gray-800">12,847</div>
           <p className="text-sm ">Active users across all companies</p>
@@ -66,7 +66,7 @@ const SuperAdminDashboard = () => {
           </div>
         </div>
         {/* Total Companies */}
-        <div className="px-6 py-4 bg-[#3275F1]/20 shadow-lg rounded-xl flex flex-col items-start gap- border border-[#3275F1]">
+        <div className="p-4 bg-[#3275F1]/20 rounded-xl flex flex-col items-start gap-1 border border-[#3275F1]">
           <div className="text-lg ">Total Companies</div>
           <div className="text-2xl font-bold text-gray-800">156</div>
           <p className="text-sm ">Active users across all companies</p>
@@ -75,7 +75,7 @@ const SuperAdminDashboard = () => {
           </div>
         </div>
         {/* Assessments Completed */}
-        <div className="px-6 py-4 bg-[#945EEB]/20 shadow-lg rounded-xl flex flex-col items-start gap- border border-[#945EEB]">
+        <div className="p-4 bg-[#945EEB]/20 rounded-xl flex flex-col items-start gap-1 border border-[#945EEB]">
           <div className="text-lg ">Assessments Completed</div>
           <div className="text-2xl font-bold text-gray-800">8,924</div>
           <p className="text-sm ">Active users across all companies</p>
@@ -84,7 +84,7 @@ const SuperAdminDashboard = () => {
           </div>
         </div>
         {/* Active Courses */}
-        <div className="px-6 py-4 bg-[#A6A8BF]/20 shadow-lg rounded-xl flex flex-col items-start gap- border border-[#A6A8BF]">
+        <div className="p-4 bg-[#A6A8BF]/20 rounded-xl flex flex-col items-start gap-1 border border-[#A6A8BF]">
           <div className="text-lg ">Active Courses</div>
           <div className="text-2xl font-bold text-gray-800">342</div>
           <p className="text-sm ">Active users across all companies</p>
@@ -95,13 +95,13 @@ const SuperAdminDashboard = () => {
       </div>
 
       {/* Growth Trends Chart */}
-      <div className="border rounded-xl bg-Sidebar">
-        <ChartLineLinear />
+      <div className=" rounded-xl bg-sidebar">
+        <ChartLine />
       </div>
 
-      <div className="flex justify-between gap-10 mt-8 h-[400px]">
+      <div className="flex flex-col lg:flex-row justify-between gap-4 xl:gap-10 mt-4 lg:h-[320px] xl:h-[360px] 2xl:h-[400px]">
         {/* Company Distribution */}
-        <div className="w-1/2 bg-Sidebar border rounded-xl p-4">
+        <div className="w-full lg:w-1/2 bg-sidebar border border-gray-200 rounded-xl p-4 ">
           <h2 className="text-xl font-medium ">Company Distribution</h2>
           <div className="flex flex-col items-center ">
             <PieChartWithCustomizedLabel
@@ -112,10 +112,10 @@ const SuperAdminDashboard = () => {
         </div>
 
         {/* Recent Activities */}
-        <div className="w-1/2 bg-Sidebar border rounded-xl p-4 overflow-y-auto ">
+        <div className="w-full lg:w-1/2 bg-sidebar border border-gray-200 rounded-xl p-4 overflow-y-auto ">
           <h2 className="text-xl font-medium mb-4">Recent Activities</h2>
-          <div className="space-y-4">
-            <div className="flex flex-col justify-between border rounded-xl p-5 bg-white">
+          <div className="space-y-2">
+            <div className="flex flex-col justify-between border border-gray-200 rounded-xl p-2 2xl:p-5 bg-white">
               <div className="flex justify-start items-center gap-4">
                 <div className="w-3 h-3 bg-[#008236] rounded-full"></div>
 
@@ -128,7 +128,7 @@ const SuperAdminDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-between border rounded-xl p-5 bg-white">
+            <div className="flex flex-col justify-between border border-gray-200 rounded-xl p-2 2xl:p-5 bg-white">
               <div className="flex justify-start items-center gap-4">
                 <div className="w-3 h-3 bg-[#008236] rounded-full"></div>
 
@@ -141,7 +141,7 @@ const SuperAdminDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-between border rounded-xl p-5 bg-white">
+            <div className="flex flex-col justify-between border border-gray-200 rounded-xl p-2 2xl:p-5 bg-white">
               <div className="flex justify-start items-center gap-4">
                 <div className="w-3 h-3 bg-[#008236] rounded-full"></div>
 
@@ -154,7 +154,7 @@ const SuperAdminDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-between border rounded-xl p-5 bg-white">
+            <div className="flex flex-col justify-between border border-gray-200 rounded-xl p-2 2xl:p-5 bg-white">
               <div className="flex justify-start items-center gap-4">
                 <div className="w-3 h-3 bg-[#008236] rounded-full"></div>
 

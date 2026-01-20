@@ -85,7 +85,7 @@ const ChoosingPricingPlan = () => {
           {pricingPlans.map((plan) => (
             <div
               key={plan.id}
-              className={`rounded-xl border border-gray-100 p-6 flex flex-col justify-between bg-Sidebar`}
+              className={`rounded-xl border border-gray-100 p-6 flex flex-col justify-between bg-sidebar`}
             >
               {/* Top */}
               <div className="space-y-6">

@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { Bell } from "lucide-react"; // Icon for notifications
+import { Bell, Menu } from "lucide-react"; // Icon for notifications
 import { images } from "../../../../assets";
 import { Search } from "lucide-react"; // Import the search icon from lucide-react
-import ProfileDropdown from "./ProfileDropdown";
+import ProfileDropdown from "../../../../GlobalComponent/ProfileDropdown";
 
-const SuperAdminNavbar = () => {
+const SuperAdminNavbar = ({toggleSidebar}) => {
+  const type = 'Super Admin'
     const [open, setOpen] = useState(false);
   return (
-    <div className="flex justify-between items-center p-4 bg-Sidebar shadow-md">
-       <div className="flex items-center space-x-4 w-full max-w-sm">
+    <div className="flex justify-between items-center p-3 md:p-4 bg-sidebar ">
+      <div className="lg:hidden">
+        <Menu onClick={toggleSidebar} size={20}/>
+      </div>
+       <div className="hidden lg:flex items-center space-x-4 w-full max-w-sm">
       <div className="relative w-full">
         <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         <input
@@ -18,8 +22,8 @@ const SuperAdminNavbar = () => {
         />
       </div>
     </div>
-      <div className="flex items-center space-x-6">
-        <button className="relative bg-[#F1E9FC] p-2 rounded-full border">
+      <div className="flex items-center space-x-2">
+        <button className="relative bg-[#F1E9FC] p-2 rounded-full border border-gray-200">
           <Bell className="w-6 h-6 text-gray-700" />
         </button>
          <div className="relative">
@@ -33,18 +37,18 @@ const SuperAdminNavbar = () => {
           alt="John Doe"
           className="w-10 h-10 rounded-full"
         />
-        <div className="flex flex-col items-start pl-2">
+        <div className="hidden lg:flex flex-col items-start pl-2">
           <p className="text-sm font-medium text-gray-700">
             John Doe
           </p>
           <p className="text-sm font-medium text-primary">
-            Super Admin
+            {type}
           </p>
         </div>
       </button>
 
       {/* Dropdown */}
-      <ProfileDropdown open={open} onClose={() => setOpen(false)} />
+      <ProfileDropdown open={open} onClose={() => setOpen(false)} type = {type}/>
     </div>
       </div>
     </div>

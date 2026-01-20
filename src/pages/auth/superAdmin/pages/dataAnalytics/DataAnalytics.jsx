@@ -124,16 +124,16 @@ const DataAnalytics = () => {
     );
   };
   return (
-    <div className="flex-1 p-6">
+    <div className="pb-4">
       {/* Header Section */}
-      <div className="flex justify-between items-center mb-8 ">
+      <div className="flex justify-between items-center mb-2 md:mb-4 lg:mb-8 ">
         <div className="flex gap-2 items-center">
           <h1 className="text-xl">Companies</h1>
           <span className="text-xs bg-primary/10 text-primary rounded-full py-1 px-2 font-medium">
             27
           </span>
         </div>
-        <div className="flex items-center space-x-4 w-full max-w-sm">
+        <div className="hidden md:flex items-center space-x-4 w-full max-w-sm">
           <div className="relative w-full text-primary">
             <Search
               size={16}
@@ -147,15 +147,28 @@ const DataAnalytics = () => {
           </div>
         </div>
         <div>
-          <div className=" border py-2 px-4 rounded-xl font-medium flex items-center gap-2">
+          <div className=" border border-gray-200 py-2 px-4 rounded-lg font-medium flex items-center gap-2">
             <img src={Icon.Filter} alt="" className="w-4 h-4" />
             Filters
           </div>
         </div>
       </div>
-      <div className="p-6 space-y-6">
+      <div className="md:hidden flex items-center space-x-4 w-full mb-4 ">
+          <div className="relative w-full text-primary">
+            <Search
+              size={16}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary"
+            />
+            <input
+              type="text"
+              placeholder="Search anything..."
+              className="w-full  pl-4 pr-4 py-2 rounded-lg border border-primary text-primary outline-none"
+            />
+          </div>
+        </div>
+      <div className="p-2 xl:p-6 space-y-2 lg:space-y-6">
         {/* Cards */}
-        <div className="grid grid-cols-1  gap-6">
+        <div className="grid grid-cols-1 gap-2 lg:gap-4">
           <div className="flex items-center space-x-2">
             {/* Select all checkbox */}
             <input
@@ -171,7 +184,7 @@ const DataAnalytics = () => {
           {companies.map((company) => (
             <div
               key={company.id}
-              className="p-4 rounded-xl border bg-Sidebar transition duration-200 flex items-center gap-4"
+              className="p-2 md:p-4 rounded-xl border border-gray-200 bg-sidebar transition duration-200 flex items-center gap-4"
             >
               <div className="flex items-center justify-between">
                 <input
@@ -186,14 +199,14 @@ const DataAnalytics = () => {
                   <div className="mt-2 flex gap-2 items-center">
                     <Link
                       to={`company/${company.id}`}
-                      className="text-xl font-semibold text-gray-800"
+                      className="text-base md:text-xl font-semibold text-gray-800"
                     >
                       {company.name}
                     </Link>
 
                     <div className="w-1 h-1 rounded-full bg-[#557AA0] mt-2" />
                     <span
-                      className={`mt-1 text-sm ${
+                      className={`mt-1 text-xs md:text-sm ${
                         company.status === "Active"
                           ? "text-[#557AA0]"
                           : "text-[#FF383C]"
@@ -212,8 +225,8 @@ const DataAnalytics = () => {
                   </div>
                   <div className="flex gap-2 items-center text-[#6C6E7E] mt-2 ">
                     <CalendarCheck2 size={14} />
-                    <p className="text-sm font-medium">
-                      Last Activity: {company.lastActivity}
+                    <p className="text-xs md:text-sm ">
+                      Last Activity : {company.lastActivity}
                     </p>
                   </div>
                 </div>
@@ -234,10 +247,10 @@ const DataAnalytics = () => {
                   {/* Dropdown */}
                   {/* Dropdown */}
                   {openId === company.id && (
-                    <div className="absolute right-0 mt-2 w-56 rounded-xl bg-white shadow-lg border p-4 space-y-4 z-50">
+                    <div className="absolute right-0 mt-2 w-56 rounded-xl bg-white shadow-lg border border-gray-200 p-4 space-y-4 z-50">
                       {/* Duplicate */}
                       <button
-                        className="w-full text-left text-gray-800 hover:text-primary font-medium"
+                        className="w-full text-left text-gray-800 hover:text-primary font-medium text-sm"
                         onClick={() => {
                           console.log("Duplicate", company.id);
                           setOpenId(null);
@@ -248,7 +261,7 @@ const DataAnalytics = () => {
 
                       {/* Active toggle */}
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-800 font-medium">
+                        <span className="text-gray-800 font-medium text-sm">
                           Active
                         </span>
 
@@ -279,7 +292,7 @@ const DataAnalytics = () => {
 
         {/* Pagination */}
         <div className="flex justify-center items-center mt-4">
-          <div className="flex space-x-6">
+          <div className="flex space-x-2">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}

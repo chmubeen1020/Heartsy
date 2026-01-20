@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Mapping your old colors to the new format */
+  --color-primary: #7028E4;
+  --color-secondary: #6366f1;
+  --color-background: #09090b;
+  --color-foreground: #ffffff;
+  --color-sidebar: #FAFAFA;
+}

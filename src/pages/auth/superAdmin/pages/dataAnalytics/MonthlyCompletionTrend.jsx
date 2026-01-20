@@ -15,7 +15,7 @@ export function MontlyCompletionChart() {
   const [showCompanies, setShowCompanies] = useState(true);
 
   return (
-    <div className=" w-full h-[400px] px-2 mb-8 border rounded-xl">
+    <div className=" w-full h-[350px] px-2 border rounded-xl">
       <div className="my-2 flex justify-between items-center">
         <div>
           <h2 className="pl-8  text-xl font-semibold">Monthly Completion Trends</h2>
@@ -37,7 +37,7 @@ export function MontlyCompletionChart() {
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height="85%">
+      <ResponsiveContainer width="100%" height="80%">
         <LineChart data={chartData}>
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <XAxis dataKey="month" tickLine={false} axisLine={false} />

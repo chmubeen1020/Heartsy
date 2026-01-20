@@ -1,30 +1,26 @@
-import { useParams , useNavigate } from "react-router-dom";
-
 import { useState } from "react";
 import {
   LayoutGrid,
   Users,
   Heart,
   Award,
-  ArrowLeft,
   Download,
   ExternalLink,
   TrendingDown,
+  ArrowLeft,
 } from "lucide-react";
-import { MontlyCompletionChart } from "./MonthlyCompletionTrend";
 import { Icon } from "../../../../../assets";
 
-import {
-  TrendingUp,
-  FileText,
-  ChartNoAxesCombined
-} from "lucide-react";
+import { TrendingUp, FileText, ChartNoAxesCombined } from "lucide-react";
+import CompletionChart from "../../../admin/pages/dashboard/CompletionChart";
+import { useNavigate } from "react-router-dom";
 
 export const peopleAnalyticsData = [
   {
     type: "engagement",
     title: "Engagement & Sentiment",
-    subtitle: "How individuals connect, feel appreciated, and express themselves",
+    subtitle:
+      "How individuals connect, feel appreciated, and express themselves",
     color: {
       border: "border-[#34C759]",
       bg: "bg-[#34C7591A]",
@@ -45,14 +41,14 @@ export const peopleAnalyticsData = [
         description: "This month",
         value: "247",
         change: "+5%",
-       icon: Users,
+        icon: Users,
       },
       {
         label: "Sentiment Analysis",
         description: "Positive sentiment",
         value: "82%",
         change: "+31%",
-       icon: Users,
+        icon: Users,
       },
       {
         label: "Emotional Well-being",
@@ -60,7 +56,7 @@ export const peopleAnalyticsData = [
         value: "43",
         change: "-19%",
         negative: true,
-       icon: Users,
+        icon: Users,
       },
     ],
   },
@@ -87,7 +83,7 @@ export const peopleAnalyticsData = [
         description: "Promotions this quarter",
         value: "67",
         change: "+12%",
-         icon: FileText,
+        icon: FileText,
       },
       {
         label: "Learning Completion",
@@ -173,14 +169,14 @@ export const cultureAnalyticsData = [
         description: "Feel included",
         value: "247",
         change: "+5%",
-       icon: Users,
+        icon: Users,
       },
       {
         label: "Psychological Safety",
         description: "Team feedback",
         value: "82%",
         change: "+31%",
-       icon: Users,
+        icon: Users,
       },
       {
         label: "Emotional Well-being",
@@ -188,7 +184,7 @@ export const cultureAnalyticsData = [
         value: "43",
         change: "-19%",
         negative: true,
-       icon: Users,
+        icon: Users,
       },
     ],
   },
@@ -293,14 +289,14 @@ export const excellenceAnalyticsData = [
         description: "Feel included",
         value: "247",
         change: "+5%",
-       icon: Users,
+        icon: Users,
       },
       {
         label: "Psychological Safety",
         description: "Team feedback",
         value: "82%",
         change: "+31%",
-       icon: Users,
+        icon: Users,
       },
       {
         label: "Emotional Well-being",
@@ -308,7 +304,7 @@ export const excellenceAnalyticsData = [
         value: "43",
         change: "-19%",
         negative: true,
-       icon: Users,
+        icon: Users,
       },
     ],
   },
@@ -335,7 +331,7 @@ export const excellenceAnalyticsData = [
         description: "Promotions this quarter",
         value: "67",
         change: "+12%",
-         icon: FileText,
+        icon: FileText,
       },
       {
         label: "Learning Completion",
@@ -395,7 +391,7 @@ const MetricCard = ({ item, colors }) => {
 
   return (
     <div
-      className={`rounded-xl border p-4 ${colors.border} ${colors.bg}`}
+      className={`rounded-xl border border-gray-200 p-2 ${colors.border} ${colors.bg}`}
     >
       {/* Icon */}
       <div className={`mb-2 ${colors.icon}`}>
@@ -403,19 +399,13 @@ const MetricCard = ({ item, colors }) => {
       </div>
 
       {/* Title */}
-      <p className="text-xl font-medium text-gray-800">
-        {item.label}
-      </p>
+      <p className="text-lg font-medium text-gray-800">{item.label}</p>
 
       {/* Subtitle */}
-      <p className=" mt-1">
-        {item.description}
-      </p>
+      <p className=" mt-1 text-sm">{item.description}</p>
 
       {/* Value */}
-      <div className="mt-2 text-3xl font-bold text-gray-900">
-        {item.value}
-      </div>
+      <div className="mt-2 text-2xl font-bold text-gray-900">{item.value}</div>
 
       {/* Change */}
       <p
@@ -423,14 +413,12 @@ const MetricCard = ({ item, colors }) => {
           item.negative ? "text-red-500" : "text-green-600"
         }`}
       >
-        {item.change} {
-          item.negative ? <TrendingDown size={14}/>: <TrendingUp size={14}/>
-        }
+        {item.change}{" "}
+        {item.negative ? <TrendingDown size={14} /> : <TrendingUp size={14} />}
       </p>
     </div>
   );
 };
-
 
 /* =======================
    TAB CONTENT COMPONENTS
@@ -440,21 +428,23 @@ const OverviewTab = () => {
   return (
     <div className="space-y-6">
       {/* Top stats */}
-      <div className="border rounded-xl bg-Sidebar py-4 px-6">
-        <div className="flex justify-between">
-          <div><h3 className="font-semibold text-xl mb-4 flex items-center gap-2">
-          Assessment Overview <ExternalLink size={14} />
-        </h3></div>
+      <div className="border rounded-xl bg-sidebar border-gray-200 p-2 md:p-6">
+        <div className="flex flex-col-reverse md:flex-row justify-between md:items-center gap-4 md:gap-0 mb-2">
+          <div>
+            <h3 className="font-semibold text-xl flex items-center gap-2">
+              Assessment Overview <ExternalLink size={14} />
+            </h3>
+          </div>
           <div className="flex justify-end gap-3">
-            <button className="flex items-center gap-2 border px-2 py-2 rounded-lg text-sm font-medium">
-              <img src={Icon.Filter} alt=""  className="w-4 h-4"/> Filters
+            <button className="flex items-center gap-2 border border-gray-200 px-4 py-1 md:py-2 rounded-lg text-sm font-medium">
+              <img src={Icon.Filter} alt="" className="w-3 h-3" /> Filters
             </button>
-            <button className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium">
+            <button className="flex items-center gap-2 bg-primary text-white px-4 py-1 md:py-2 rounded-lg text-sm font-medium">
               <Download size={14} /> Export
             </button>
           </div>
         </div>
-        <div className="w-full flex justify-between py-4 mt-4">
+        <div className="w-full flex flex-col md:flex-row justify-between px-4 gap-2 md:px-0 md:gap-0 py-4 mt-4 items-start">
           <StatCard
             title="High Engagement Departments"
             value="94.5%"
@@ -473,24 +463,24 @@ const OverviewTab = () => {
         </div>
       </div>
       {/* Line chart placeholder */}
-      <div className="bg-Sidebar rounded-xl border py-2 px-4">
-        <MontlyCompletionChart />
+      <div className="bg-sidebar rounded-xl md:border border-gray-200 p-2 md:p-4">
+        <CompletionChart />
 
         {/* Department completion */}
-        <h3 className="font-semibold text-xl mb-4 flex items-center gap-2">
+        <h3 className="font-semibold text-xl mb-2 flex items-center gap-2 py-2">
           Departments Completion Rates <ExternalLink size={14} />
         </h3>
         <div className="space-y-4">
-        <div className=" rounded-xl border px-4 py-2">
-          <DepartmentRow name="Design" users={145} percent={92} />
+          <div className=" rounded-xl border border-gray-200 px-4 py-2">
+            <DepartmentRow name="Design" users={145} percent={92} />
+          </div>
+          <div className=" rounded-xl border border-gray-200 px-4 py-2">
+            <DepartmentRow name="Sales" users={52} percent={87} />
+          </div>
+          <div className=" rounded-xl border border-gray-200 px-4 py-2">
+            <DepartmentRow name="Engineering" users={36} percent={94} />
+          </div>
         </div>
-        <div className=" rounded-xl border px-4 py-2">
-          <DepartmentRow name="Sales" users={52} percent={87} />
-        </div>
-        <div className=" rounded-xl border px-4 py-2">
-          <DepartmentRow name="Engineering" users={36} percent={94} />
-        </div>
-      </div>
       </div>
     </div>
   );
@@ -508,13 +498,9 @@ const PeopleTab = () => {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
             {section.items.map((item, index) => (
-              <MetricCard
-                key={index}
-                item={item}
-                colors={section.color}
-              />
+              <MetricCard key={index} item={item} colors={section.color} />
             ))}
           </div>
         </div>
@@ -523,7 +509,7 @@ const PeopleTab = () => {
   );
 };
 
-const CultureTab = () => { 
+const CultureTab = () => {
   return (
     <div className="space-y-6">
       {cultureAnalyticsData.map((section) => (
@@ -535,13 +521,9 @@ const CultureTab = () => {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
             {section.items.map((item, index) => (
-              <MetricCard
-                key={index}
-                item={item}
-                colors={section.color}
-              />
+              <MetricCard key={index} item={item} colors={section.color} />
             ))}
           </div>
         </div>
@@ -550,7 +532,7 @@ const CultureTab = () => {
   );
 };
 
-const ExcellenceTab = () => { 
+const ExcellenceTab = () => {
   return (
     <div className="space-y-6">
       {excellenceAnalyticsData.map((section) => (
@@ -562,13 +544,9 @@ const ExcellenceTab = () => {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
             {section.items.map((item, index) => (
-              <MetricCard
-                key={index}
-                item={item}
-                colors={section.color}
-              />
+              <MetricCard key={index} item={item} colors={section.color} />
             ))}
           </div>
         </div>
@@ -581,9 +559,7 @@ const ExcellenceTab = () => {
    MAIN COMPONENT
 ======================= */
 
- 
 const CompanyData = () => {
-  const { id } = useParams();
   const [activeTab, setActiveTab] = useState("overview");
    const navigate = useNavigate();
 
@@ -611,20 +587,19 @@ const CompanyData = () => {
   };
 
   return (
-    <div className="p-6 space-y-2">
+    <div className="p-2 space-y-2 ">
       {/* Header */}
-      <div >
-         <button
-      onClick={handleBack}
-      className="flex items-center gap-3 text-left text-lg"
-    >
-      <ArrowLeft size={20} />
-      <span className="font-semibold">Company {id}</span>
-    </button>
+      <div>
+        <button
+          onClick={handleBack}
+          className="flex items-center gap-3 text-left text-lg hover:cursor-pointer"
+        >
+          <ArrowLeft size={20} />
+          <span className="font-semibold">Company</span>
+        </button>
       </div>
-
       {/* Tabs */}
-      <div className="flex gap-6 justify-center pb-2">
+      <div className="flex gap-2 justify-center py-1 bg-white ">
         <TabButton
           icon={<LayoutGrid size={16} />}
           label="Overview"
@@ -668,7 +643,7 @@ export default CompanyData;
 const TabButton = ({ icon, label, active, onClick }) => (
   <button
     onClick={onClick}
-    className={`flex items-center gap-2 px-4 py-3 rounded-lg font-medium ${
+    className={`flex items-center gap-2 px-2 py-2 text-xs md:text-base md:px-4 md:py-2 rounded-lg font-medium ${
       active ? "bg-primary text-white" : "text-gray-600 hover:bg-gray-100"
     }`}
   >
@@ -689,7 +664,10 @@ const DepartmentRow = ({ name, users, percent }) => (
   <div className="mb-4">
     <div className="flex justify-between text-sm mb-1">
       <span className="text-primary font-medium text-lg">
-        {name} <span className="text-sm font-normal text-primary bg-primary/10 px-2 rounded-full">{users} Users</span>
+        {name}{" "}
+        <span className="text-sm font-normal text-primary bg-primary/10 px-2 rounded-full">
+          {users} Users
+        </span>
       </span>
       <span className="text-primary font-medium">{percent}%</span>
     </div>
@@ -701,4 +679,3 @@ const DepartmentRow = ({ name, users, percent }) => (
     </div>
   </div>
 );
-

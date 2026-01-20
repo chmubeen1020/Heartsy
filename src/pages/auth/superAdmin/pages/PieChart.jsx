@@ -38,7 +38,7 @@ export default function PieChartWithButtons({ isAnimationActive = true }) {
       
 
       {/* Pie chart */}
-      <PieChart style={{ width: '65%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 1 }} responsive>
+      <PieChart style={{ width: '70%', maxWidth: '520px', maxHeight: '80vh', aspectRatio: 1 }} responsive>
         <Pie
           data={filteredData}
           labelLine={false}
@@ -51,22 +51,22 @@ export default function PieChartWithButtons({ isAnimationActive = true }) {
         </Pie>
         
       </PieChart>
-      <div className=' flex justify-center gap-10'>
+      <div className=' flex justify-center gap-4 lg:gap-2 xl:gap-6'>
         <button
           onClick={() => handleToggle('Enterprise')}
-          className=" rounded-lg mr-2 flex gap-2 items-center"
+          className="flex gap-2 items-center text-xs xl:text-sm 2xl:text-base"
         >
             <div className='w-2 h-2 rounded-full bg-[#00A63E]'></div> Enterprise (500+)
         </button>
         <button
           onClick={() => handleToggle('Medium')}
-          className=" flex gap-2 items-center"
+          className=" flex gap-2 items-center text-xs xl:text-sm 2xl:text-base"
         >
             <div className='w-2 h-2 rounded-full bg-[#F54900]'></div> Medium (100-499)
         </button>
         <button
           onClick={() => handleToggle('Small')}
-          className=" flex gap-2 items-center"
+          className=" flex gap-2 items-center text-xs xl:text-sm 2xl:text-base"
         >
             <div className='w-2 h-2 rounded-full bg-[#155DFC] '></div> Small (10-99)
         </button>
